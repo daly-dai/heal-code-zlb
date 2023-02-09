@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "author": "dsh <18094277434@163.com>",
+  "scripts": {
+    "dev": "umi dev",
+    "build": "umi build",
+    "postinstall": "umi setup",
+    "setup": "umi setup",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "antd-mobile": "^5.28.0",
+    "react-use": "^17.4.0",
+    "umi": "^4.0.51",
+    "valtio": "^1.10.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^4.1.2"
+  }
+}
