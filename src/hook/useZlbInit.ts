@@ -1,17 +1,19 @@
 import { useCallback } from 'react'
-import { REDIRECT_URL_MAP } from '@/constant/constant-zlb'
+import { H5_HEALTH_CODE_MAP, REDIRECT_URL_MAP } from '@/constant/constant-zlb'
 import { appStore } from '@/store/appState'
 import {
   closeApp,
   getUrlParams,
   isZLBWx,
-  JudgeZlbEnvironment
+  JudgeZlbEnvironment,
+  urlConcatParams
 } from '@/utils/tools'
 import { containerReady } from '@/utils/zlb-utils'
 import { history } from 'umi'
 
 // 单点登录
 const handleLogin = async () => {
+  const AUTHORISE = 'https://puser.zjzwfw.gov.cn/sso/mobile.do?action=oauth&scope=1&servicecode=BCDSGA_5f2d6d0d631bcb18da0113a8f946acb5'
   await containerReady()
   const searchParams = new URLSearchParams(window.location.search)
 
@@ -58,11 +60,23 @@ const useZlbInit = async () => {
 
   if (!ticket) return
 
-  const UiStyle = await getUiStyle()
+  const uiStyle = await getUiStyle()
 
-  history.push({
-    pathname: '/zlb-excessive'
-  })
+  const params = {
+    ticket,
+    uiStyle
+  }
+
+
+  // 健康码相关地址
+  const healthCodeHref = H5_HEALTH_CODE_MAP[JudgeZlbEnvironment()]
+
+  const healthFullUrl = urlConcatParams(healthCodeHref, params);
+
+
+  // 跳转健康码
+  window.location.href = healthFullUrl
+
 }
 
 export default useZlbInit

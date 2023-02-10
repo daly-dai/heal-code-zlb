@@ -13,9 +13,19 @@ interface StrObj {
 const REDIRECT_URL_MAP: StrObj = {
   localhost: '&redirectUrl=http://localhost:8000',
   lastTest:
-    '&redirectUrl=https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2002202111/lastTest/index.html',
+    '&redirectUrl=https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2002310597/lastTest/index.html',
   reserved:
-    '&redirectUrl=https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2002202111/reserved/index.html'
+    '&redirectUrl=https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2002310597/reserved/index.html'
+}
+
+
+// 本地跳转h5健康码相关地址
+const H5_HEALTH_CODE_MAP: StrObj = {
+  localhost: 'http://localhost:8001/zlb-excessive',
+  lastTest:
+    '',
+  reserved:
+    ''
 }
 
 // 浙里办后端服务地址
@@ -25,4 +35,4 @@ const ZLB_SERVER_URL_MAP: StrObj = {
   reserved: 'https://szhzjkm.hangzhou.gov.cn:9092'
 }
 
-export { REDIRECT_URL_MAP, ZLB_SERVER_URL_MAP }
+export { REDIRECT_URL_MAP, ZLB_SERVER_URL_MAP, H5_HEALTH_CODE_MAP }

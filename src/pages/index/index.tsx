@@ -7,7 +7,6 @@ const Home = () => {
   const [isRender, setIsRender, removeIsRender] = useLocalStorage("isRender");
 
   useEffect(() => {
-    if (currentApplication !== "zlb") return;
     console.log("进入首页的次数");
 
     removeIsRender();

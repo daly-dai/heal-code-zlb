@@ -52,3 +52,24 @@ export const closeApp = () => {
 
   ZWJSBridge.close()
 }
+
+
+/*
+* 给url拼接paramsObj
+* 将paramsObj所有key value以key=value的形式拼接到url后，例如：
+* path?key1=value1&key2=value2
+* path string
+* paramsObj object
+* */
+export function urlConcatParams(path: string, paramsObj: any) {
+  let params = '';
+  for (let key of Object.keys(paramsObj)) {
+    const keyVal = `${key}=${encodeURIComponent(paramsObj[key])}`;
+    if (!params) {
+      params = keyVal;
+    } else {
+      params += `&${keyVal}`;
+    }
+  }
+  return params ? `${path}?${params}` : path;
+}
